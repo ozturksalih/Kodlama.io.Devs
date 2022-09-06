@@ -7,10 +7,10 @@ using MediatR;
 
 namespace Application.Features.ProgrammingLanguages.Queries.GetByIdProgrammingLanguage
 {
-    public class GetByIdProgrammingLanguageQuery : IRequest<GetByIdProgrammingLanguageDto>
+    public class GetByIdProgrammingLanguageQuery : IRequest<ProgrammingLanguageGetByIdDto>
     {
         public int Id { get; set; }
-        public class GetByIdProgrammingLanguageHandler : IRequestHandler<GetByIdProgrammingLanguageQuery, GetByIdProgrammingLanguageDto>
+        public class GetByIdProgrammingLanguageHandler : IRequestHandler<GetByIdProgrammingLanguageQuery, ProgrammingLanguageGetByIdDto>
         {
             private readonly IMapper _mapper;
             private readonly IProgrammingLanguageRepository _programmingLanguageRepository;
@@ -24,13 +24,13 @@ namespace Application.Features.ProgrammingLanguages.Queries.GetByIdProgrammingLa
                 _programmingLanguageBusinessRules = programmingLanguageBusinessRules;
             }
 
-            public async Task<GetByIdProgrammingLanguageDto> Handle(GetByIdProgrammingLanguageQuery request, CancellationToken cancellationToken)
+            public async Task<ProgrammingLanguageGetByIdDto> Handle(GetByIdProgrammingLanguageQuery request, CancellationToken cancellationToken)
             {
                 ProgrammingLanguage? programmingLanguage = await _programmingLanguageRepository.GetAsync(pl => pl.Id == request.Id);
 
                 _programmingLanguageBusinessRules.ProgrammingLangugageShouldExistWhenRequested(programmingLanguage);
                 
-                GetByIdProgrammingLanguageDto getByIdProgrammingLanguageDto = _mapper.Map<GetByIdProgrammingLanguageDto>(programmingLanguage);
+                ProgrammingLanguageGetByIdDto getByIdProgrammingLanguageDto = _mapper.Map<ProgrammingLanguageGetByIdDto>(programmingLanguage);
 
                 return getByIdProgrammingLanguageDto;
             }
