@@ -1,4 +1,6 @@
 ﻿using Application.Services.Repositories;
+using Core.CrossCuttingConcerns.Exceptions;
+using Core.Persistence.Paging;
 using Domain.Entities;
 
 namespace Application.Features.ProgrammingLanguages.Rules
@@ -11,10 +13,14 @@ namespace Application.Features.ProgrammingLanguages.Rules
         {
             _programmingLanguageRepository = programmingLanguageRepository;
         }
-
+        public async Task ProgrammingLanguageCanNotBeDuplicated(string name)
+        {
+            IPaginate<ProgrammingLanguage> result =  await _programmingLanguageRepository.GetListAsync(pl => pl.Name == name);
+            if (result.Items.Any()) throw new BusinessException("Entered programming language exist");
+        }
         public void ProgrammingLangugageShouldExistWhenRequested(ProgrammingLanguage programmingLanguage)
         {
-            if (programmingLanguage == null) return;
+            if (programmingLanguage == null) throw new BusinessException("Requested programming language doesn't exist");
         }
     }
 }
