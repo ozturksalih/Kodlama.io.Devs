@@ -11,10 +11,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Controllers\" />
-	</ItemGroup>
-
-	<ItemGroup>
+		<PackageReference Include="MediatR" Version="10.0.1" />
 		<ProjectReference Include="..\Persistence\Persistence.csproj" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.8">
 			<PrivateAssets>all</PrivateAssets>
