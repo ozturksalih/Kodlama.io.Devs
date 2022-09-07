@@ -2,6 +2,7 @@
 using Core.CrossCuttingConcerns.Exceptions;
 using Core.Persistence.Paging;
 using Domain.Entities;
+using System.Xml.Linq;
 
 namespace Application.Features.ProgrammingLanguages.Rules
 {
@@ -21,6 +22,12 @@ namespace Application.Features.ProgrammingLanguages.Rules
         public void ProgrammingLangugageShouldExistWhenRequested(ProgrammingLanguage programmingLanguage)
         {
             if (programmingLanguage == null) throw new BusinessException("Requested programming language doesn't exist");
+        }
+        public async Task ProgrammingLanguageShouldExistInDatabase(ProgrammingLanguage programmingLanguage)
+        {
+            var result = await _programmingLanguageRepository.GetAsync(pl=>pl.Id == programmingLanguage.Id);
+            if (result == null) throw new BusinessException("Entered programming language doesn't exist");
+
         }
     }
 }
