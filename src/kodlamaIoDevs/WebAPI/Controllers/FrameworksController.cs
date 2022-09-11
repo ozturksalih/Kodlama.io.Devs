@@ -1,5 +1,6 @@
 ﻿using Application.Features.Frameworks.Commands.CreateFramework;
 using Application.Features.Frameworks.Commands.DeleteFramework;
+using Application.Features.Frameworks.Commands.UpdateFramework;
 using Application.Features.Frameworks.Dtos;
 using Application.Features.Frameworks.Models;
 using Application.Features.Frameworks.Queries.GetListFramework;
@@ -34,5 +35,11 @@ namespace WebAPI.Controllers
             return Ok(deletedFrameworkDto);
         }
 
+        [HttpPut]
+        public async Task<IActionResult> UpdateFramework([FromBody] UpdateFrameworkCommand command)
+        {
+            UpdatedFrameworkDto result = await Mediator.Send(command);
+            return Ok(result);
+        } 
     }
 }
