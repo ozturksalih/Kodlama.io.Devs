@@ -1,4 +1,5 @@
 ﻿using Application.Features.Frameworks.Commands.CreateFramework;
+using Application.Features.Frameworks.Commands.DeleteFramework;
 using Application.Features.Frameworks.Dtos;
 using Application.Features.Frameworks.Models;
 using Application.Features.Frameworks.Queries.GetListFramework;
@@ -24,6 +25,13 @@ namespace WebAPI.Controllers
         {
             CreatedFrameworkDto result = await Mediator.Send(command);
             return Created(" ", result);
+        }
+
+        [HttpDelete("{Id}")]
+        public async Task<IActionResult> Delete([FromRoute] DeleteFrameworkCommand command)
+        {
+            DeletedFrameworkDto deletedFrameworkDto = await Mediator.Send(command);
+            return Ok(deletedFrameworkDto);
         }
 
     }

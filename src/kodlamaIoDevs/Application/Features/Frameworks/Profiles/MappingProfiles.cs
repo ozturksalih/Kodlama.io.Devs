@@ -1,4 +1,5 @@
 ﻿using Application.Features.Frameworks.Commands.CreateFramework;
+using Application.Features.Frameworks.Commands.DeleteFramework;
 using Application.Features.Frameworks.Dtos;
 using Application.Features.Frameworks.Models;
 using AutoMapper;
@@ -20,6 +21,10 @@ namespace Application.Features.Frameworks.Profiles
 
             CreateMap<Framework, CreateFrameworkCommand>().ReverseMap();
             CreateMap<Framework, CreatedFrameworkDto>().ReverseMap();
+
+
+            CreateMap<Framework, DeleteFrameworkCommand>().ReverseMap();
+            CreateMap<Framework, DeletedFrameworkDto>().ReverseMap();
 
         }
     }
