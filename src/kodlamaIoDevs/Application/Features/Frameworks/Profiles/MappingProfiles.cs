@@ -1,4 +1,5 @@
-﻿using Application.Features.Frameworks.Dtos;
+﻿using Application.Features.Frameworks.Commands.CreateFramework;
+using Application.Features.Frameworks.Dtos;
 using Application.Features.Frameworks.Models;
 using AutoMapper;
 using Core.Persistence.Paging;
@@ -15,6 +16,10 @@ namespace Application.Features.Frameworks.Profiles
                 .ReverseMap();
 
             CreateMap<IPaginate<Framework>, FrameworkListModel>().ReverseMap();
+
+
+            CreateMap<Framework, CreateFrameworkCommand>().ReverseMap();
+            CreateMap<Framework, CreatedFrameworkDto>().ReverseMap();
 
         }
     }
