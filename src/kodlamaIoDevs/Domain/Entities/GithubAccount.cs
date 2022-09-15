@@ -20,6 +20,6 @@ namespace Domain.Entities
             GithubLink = githubLink;
         }
 
-        public virtual Developer Developer { get; set; }
+        public virtual Member Member { get; set; }
     }
 }

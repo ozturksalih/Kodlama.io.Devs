@@ -11,7 +11,7 @@ namespace Persistence.Contexts
         protected IConfiguration Configuration { get; set; }
         public DbSet<ProgrammingLanguage> ProgrammingLanguages { get; set; }
         public DbSet<Framework> Frameworks { get; set; }
-        public DbSet<Developer> Developers { get; set; }
+        public DbSet<Member> Members { get; set; }
         public DbSet<GithubAccount> GithubAccounts { get; set; }
 
         public DbSet<User> Users { get; set; }
@@ -117,9 +117,9 @@ namespace Persistence.Contexts
 
 
 
-            modelBuilder.Entity<Developer>(p =>
+            modelBuilder.Entity<Member>(p =>
             {
-                p.ToTable("Developers");
+                p.ToTable("Members");
                 p.HasMany(p => p.GithubAccounts);
             });
 
@@ -129,7 +129,7 @@ namespace Persistence.Contexts
                 p.Property(p => p.Id).HasColumnName("Id");
                 p.Property(p => p.DeveloperId).HasColumnName("DeveloperId");
                 p.Property(p => p.GithubLink).HasColumnName("GithubLink");
-                p.HasOne(p => p.Developer);
+                p.HasOne(p => p.Member);
             });
         }
 
