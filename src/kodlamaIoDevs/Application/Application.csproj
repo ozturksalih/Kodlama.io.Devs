@@ -17,11 +17,9 @@
 	<ItemGroup>
 		<Folder Include="Features\Frameworks\Constants\" />
 		<Folder Include="Features\ProgrammingLanguages\Constants\" />
-		<Folder Include="Features\Users\Commands\LoginUser\" />
 		<Folder Include="Features\Users\Models\" />
 		<Folder Include="Features\Users\Constants\" />
 		<Folder Include="Features\Users\Queries\" />
-		<Folder Include="Features\Users\Rules\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />

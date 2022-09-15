@@ -9,6 +9,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace Core.Security.JWT
 {
+
     public class JwtHelper : ITokenHelper
     {
         public IConfiguration Configuration { get; }

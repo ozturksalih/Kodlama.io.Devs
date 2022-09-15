@@ -1,4 +1,5 @@
-﻿using Application.Features.Users.Commands.RegisterUser;
+﻿using Application.Features.Users.Commands.LoginUser;
+using Application.Features.Users.Commands.RegisterUser;
 using Application.Features.Users.Dtos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -16,5 +17,14 @@ namespace WebAPI.Controllers
 
             return Ok(registeredUserDto);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Login([FromQuery] LoginUserCommand command)
+        {
+            LoggedUserDto loggedUserDto = await Mediator.Send(command);
+            return Ok(loggedUserDto);
+        }
+
+
     }
 }
