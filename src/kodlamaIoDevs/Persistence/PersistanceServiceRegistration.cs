@@ -17,6 +17,7 @@ namespace Persistence
                                                          configuration.GetConnectionString("kodlamaioDevsConnectionString")));
             services.AddScoped<IProgrammingLanguageRepository, ProgrammingLanguageRepository>();
             services.AddScoped<IFrameworkRepository, FrameworkRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             return services;
         }
