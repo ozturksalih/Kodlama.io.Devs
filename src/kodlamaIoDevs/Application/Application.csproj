@@ -16,6 +16,11 @@
 
 	<ItemGroup>
 		<Folder Include="Features\Frameworks\Constants\" />
+		<Folder Include="Features\GithubAccounts\Commands\" />
+		<Folder Include="Features\GithubAccounts\Dtos\" />
+		<Folder Include="Features\GithubAccounts\Rules\" />
+		<Folder Include="Features\GithubAccounts\Profiles\" />
+		<Folder Include="Features\GithubAccounts\Queris\" />
 		<Folder Include="Features\ProgrammingLanguages\Constants\" />
 		<Folder Include="Features\Users\Models\" />
 		<Folder Include="Features\Users\Constants\" />

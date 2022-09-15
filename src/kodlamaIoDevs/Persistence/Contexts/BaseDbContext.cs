@@ -10,6 +10,14 @@ namespace Persistence.Contexts
     {
         protected IConfiguration Configuration { get; set; }
         public DbSet<ProgrammingLanguage> ProgrammingLanguages { get; set; }
+        public DbSet<Framework> Frameworks { get; set; }
+        public DbSet<Developer> Developers { get; set; }
+        public DbSet<GithubAccount> GithubAccounts { get; set; }
+
+        public DbSet<User> Users { get; set; }
+        public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
+        public DbSet<OperationClaim> OperationClaims { get; set; }
+        
 
         public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)
         {
@@ -70,6 +78,8 @@ namespace Persistence.Contexts
                 u.Property(u => u.PasswordSalt).HasColumnName("PasswordSalt");
                 u.Property(u => u.Status).HasColumnName("Status");
                 u.Property(u => u.AuthenticatorType).HasColumnName("AuthenticatorType");
+                u.HasMany(u => u.UserOperationClaims);
+                u.HasMany(u => u.RefreshTokens);
             });
             User[] userEntitySeeds =
             {
@@ -95,13 +105,32 @@ namespace Persistence.Contexts
             modelBuilder.Entity<UserOperationClaim>(a =>
             {
                 a.ToTable("UserOperationClaims").HasKey(k => k.Id);
-                a.Property(p => p.Id).HasColumnName("Id");
-                a.Property(p => p.OperationClaimId).HasColumnName("OperationClaimId");
-                a.Property(p => p.UserId).HasColumnName("UserId");
+                a.Property(a => a.Id).HasColumnName("Id");
+                a.Property(a => a.OperationClaimId).HasColumnName("OperationClaimId");
+                a.Property(a => a.UserId).HasColumnName("UserId");
+                a.HasOne(a => a.OperationClaim);
+                a.HasOne(a => a.User);
 
             });         
             UserOperationClaim[] userOperationClaimEntitySeeds = { new(1, 1, 2) };
             modelBuilder.Entity<UserOperationClaim>().HasData(userOperationClaimEntitySeeds);
+
+
+
+            modelBuilder.Entity<Developer>(p =>
+            {
+                p.ToTable("Developers");
+                p.HasMany(p => p.GithubAccounts);
+            });
+
+            modelBuilder.Entity<GithubAccount>(p =>
+            {
+                p.ToTable("GithubAccounts").HasKey(k => k.Id);
+                p.Property(p => p.Id).HasColumnName("Id");
+                p.Property(p => p.DeveloperId).HasColumnName("DeveloperId");
+                p.Property(p => p.GithubLink).HasColumnName("GithubLink");
+                p.HasOne(p => p.Developer);
+            });
         }
 
     }
