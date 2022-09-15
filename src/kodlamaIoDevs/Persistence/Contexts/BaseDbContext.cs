@@ -127,7 +127,7 @@ namespace Persistence.Contexts
             {
                 p.ToTable("GithubAccounts").HasKey(k => k.Id);
                 p.Property(p => p.Id).HasColumnName("Id");
-                p.Property(p => p.DeveloperId).HasColumnName("DeveloperId");
+                p.Property(p => p.MemberId).HasColumnName("MemberId");
                 p.Property(p => p.GithubLink).HasColumnName("GithubLink");
                 p.HasOne(p => p.Member);
             });
