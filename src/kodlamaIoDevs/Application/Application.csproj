@@ -15,10 +15,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Features\Members\Commands\" />
-		<Folder Include="Features\Members\Dtos\" />
-		<Folder Include="Features\Members\Rules\" />
-		<Folder Include="Features\Members\Profiles\" />
 		<Folder Include="Features\Members\Queries\" />
 		<Folder Include="Features\Frameworks\Constants\" />
 		<Folder Include="Features\GithubAccounts\Commands\" />
@@ -27,9 +23,6 @@
 		<Folder Include="Features\GithubAccounts\Profiles\" />
 		<Folder Include="Features\GithubAccounts\Queris\" />
 		<Folder Include="Features\ProgrammingLanguages\Constants\" />
-		<Folder Include="Features\Users\Models\" />
-		<Folder Include="Features\Users\Constants\" />
-		<Folder Include="Features\Users\Queries\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />

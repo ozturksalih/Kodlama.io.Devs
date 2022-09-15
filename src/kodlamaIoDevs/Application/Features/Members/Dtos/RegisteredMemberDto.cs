@@ -1,6 +1,6 @@
-﻿namespace Application.Features.Users.Dtos
+﻿namespace Application.Features.Members.Dtos
 {
-    public class RegisteredUserDto
+    public class RegisteredMemberDto
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
