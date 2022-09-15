@@ -16,7 +16,6 @@ namespace Application.Features.Frameworks.Profiles
             CreateMap<Framework, FrameworkListDto>().ForMember(f=> 
             f.ProgrammingLanguageName, opt => opt.MapFrom(c=>c.ProgrammingLanguage.Name))
                 .ReverseMap();
-
             CreateMap<IPaginate<Framework>, FrameworkListModel>().ReverseMap();
 
 
