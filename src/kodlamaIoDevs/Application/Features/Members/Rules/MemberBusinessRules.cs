@@ -19,6 +19,12 @@ namespace Application.Features.Members.Rules
             if (member == null) throw new BusinessException("Member must exist.");
         }
 
+        public async Task CheckIsMemberExistByIdAsync(int id)
+        {
+            Member? member = await _memberRepository.GetAsync(m => m.Id == id);
+            MemberMustExistWhenRequested(member);
+        }
+
         public void VerifyMemberPassword(string password, byte[] passwordHash, byte[] passwordSalt)
         {
             bool verified = HashingHelper.VerifyPasswordHash(password, passwordHash, passwordSalt);

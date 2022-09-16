@@ -1,6 +1,5 @@
 ﻿using Application.Services.Repositories;
 using Core.CrossCuttingConcerns.Exceptions;
-using Core.Persistence.Repositories;
 using Domain.Entities;
 
 namespace Application.Features.GithubAccounts.Rules
@@ -18,5 +17,6 @@ namespace Application.Features.GithubAccounts.Rules
         {
             if (githubAccount == null) throw new BusinessException("Github Account must exist.");
         }
+        
     }
 }

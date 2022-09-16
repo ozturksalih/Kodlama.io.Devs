@@ -1,4 +1,5 @@
-﻿using Application.Features.GithubAccounts.Dtos;
+﻿using Application.Features.Core.Core.Command;
+using Application.Features.GithubAccounts.Dtos;
 using Application.Features.GithubAccounts.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
@@ -11,24 +12,18 @@ namespace Application.Features.GithubAccounts.Commands.CreateGithubAccount
     {
         public int MemberId { get; set; }
         public string GithubLink { get; set; }
-        public class CreateGithubAccountCommandHandler : IRequestHandler<CreateGithubAccountCommand, CreatedGithubAccountDto>
+        public class CreateGithubAccountCommandHandler : BaseCommandHandler<IGithubAccountRepository, GithubAccountBusinessRules>, 
+            IRequestHandler<CreateGithubAccountCommand, CreatedGithubAccountDto>
         {
-            private readonly IGithubAccountRepository _githubAccountRepository;
-            private readonly IMapper _mapper;
-            private readonly GithubAccountBusinessRules _githubAccountBusinessRules;
-
-            public CreateGithubAccountCommandHandler(IGithubAccountRepository githubAccountRepository, IMapper mapper, GithubAccountBusinessRules githubAccountBusinessRules)
+            public CreateGithubAccountCommandHandler(IGithubAccountRepository repository, IMapper mapper, GithubAccountBusinessRules businessRules) : base(repository, mapper, businessRules)
             {
-                _githubAccountRepository = githubAccountRepository;
-                _mapper = mapper;
-                _githubAccountBusinessRules = githubAccountBusinessRules;
             }
 
             public async Task<CreatedGithubAccountDto> Handle(CreateGithubAccountCommand request, CancellationToken cancellationToken)
             {
                 GithubAccount githubAccount = _mapper.Map<GithubAccount>(request);
 
-                GithubAccount addedGithubAccount = await _githubAccountRepository.AddAsync(githubAccount);
+                GithubAccount addedGithubAccount = await _repository.AddAsync(githubAccount);
 
                 CreatedGithubAccountDto createdGithubAccountDto = _mapper.Map<CreatedGithubAccountDto>(addedGithubAccount);
                 return createdGithubAccountDto;
