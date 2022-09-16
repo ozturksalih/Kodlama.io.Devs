@@ -2,6 +2,7 @@
 using Application.Features.GithubAccounts.Commands.DeleteGithubAccount;
 using Application.Features.GithubAccounts.Commands.UpdateGithubAccount;
 using Application.Features.GithubAccounts.Dtos;
+using Application.Features.GithubAccounts.Queries.GetGithubAccountByMemberId;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -31,6 +32,13 @@ namespace WebAPI.Controllers
         {
             UpdatedGithubAccountDto updatedGithubAccountDto = await Mediator.Send(command);
             return Ok(updatedGithubAccountDto);
+        }
+
+        [HttpGet("{MemberId}")]
+        public async Task<IActionResult> GetByMemberId([FromRoute] GetGithubAccountByMemberIdQuery query)
+        {
+            GetByMemberIdGithubAccountDto getByMemberIdGithubAccountDto = await Mediator.Send(query);
+            return Ok(getByMemberIdGithubAccountDto);
         }
     }
 }

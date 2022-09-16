@@ -23,6 +23,8 @@ namespace Application.Features.GithubAccounts.Commands.CreateGithubAccount
             {
                 GithubAccount githubAccount = _mapper.Map<GithubAccount>(request);
 
+                await _businessRules.GithubAccountCanNotBeInsertedWhenMemberAlreadyHaveOne(githubAccount);
+
                 GithubAccount addedGithubAccount = await _repository.AddAsync(githubAccount);
 
                 CreatedGithubAccountDto createdGithubAccountDto = _mapper.Map<CreatedGithubAccountDto>(addedGithubAccount);

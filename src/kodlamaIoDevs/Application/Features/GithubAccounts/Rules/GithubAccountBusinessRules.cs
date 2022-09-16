@@ -17,6 +17,12 @@ namespace Application.Features.GithubAccounts.Rules
         {
             if (githubAccount == null) throw new BusinessException("Github Account must exist.");
         }
+        public async Task GithubAccountCanNotBeInsertedWhenMemberAlreadyHaveOne(GithubAccount githubAccount)
+        {
+            GithubAccount? git = await _githubAccountRepository.GetAsync(g => g.MemberId == githubAccount.MemberId);
+
+            if (git != null) throw new BusinessException("One member can't have two github profiles!");
+        }
         
     }
 }

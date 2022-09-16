@@ -2,6 +2,7 @@
 using Application.Features.GithubAccounts.Commands.DeleteGithubAccount;
 using Application.Features.GithubAccounts.Commands.UpdateGithubAccount;
 using Application.Features.GithubAccounts.Dtos;
+using Application.Features.ProgrammingLanguages.Queries.GetByIdProgrammingLanguage;
 using AutoMapper;
 using Domain.Entities;
 
@@ -19,6 +20,9 @@ namespace Application.Features.GithubAccounts.Profiles
 
             CreateMap<GithubAccount, UpdateGithubAccountCommand>().ReverseMap();
             CreateMap<GithubAccount, UpdatedGithubAccountDto>().ReverseMap();
+
+            CreateMap<GithubAccount, GetByIdProgrammingLanguageQuery>().ReverseMap();
+            CreateMap<GithubAccount, GetByMemberIdGithubAccountDto>().ReverseMap();
         }
     }
 }
