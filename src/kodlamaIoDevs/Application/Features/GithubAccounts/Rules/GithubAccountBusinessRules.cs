@@ -12,7 +12,6 @@ namespace Application.Features.GithubAccounts.Rules
         {
             _githubAccountRepository = githubAccountRepository;
         }
-
         public void GithubAccountMustExistWhenRequested(GithubAccount githubAccount)
         {
             if (githubAccount == null) throw new BusinessException("Github Account must exist.");
