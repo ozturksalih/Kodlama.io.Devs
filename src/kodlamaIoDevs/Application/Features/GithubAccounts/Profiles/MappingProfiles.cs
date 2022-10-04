@@ -22,7 +22,9 @@ namespace Application.Features.GithubAccounts.Profiles
             CreateMap<GithubAccount, UpdatedGithubAccountDto>().ReverseMap();
 
             CreateMap<GithubAccount, GetByIdProgrammingLanguageQuery>().ReverseMap();
-            CreateMap<GithubAccount, GetByMemberIdGithubAccountDto>().ReverseMap();
+            CreateMap<GithubAccount, GetByMemberIdGithubAccountDto>()
+            .ForMember(c => c.MemberEmail, opt => opt.MapFrom(c => c.Member.Email))
+            .ReverseMap();
         }
     }
 }

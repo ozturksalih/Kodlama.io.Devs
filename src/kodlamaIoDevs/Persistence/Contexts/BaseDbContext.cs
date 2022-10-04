@@ -13,11 +13,11 @@ namespace Persistence.Contexts
         public DbSet<Framework> Frameworks { get; set; }
         public DbSet<Member> Members { get; set; }
         public DbSet<GithubAccount> GithubAccounts { get; set; }
-
         public DbSet<User> Users { get; set; }
         public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
         public DbSet<OperationClaim> OperationClaims { get; set; }
-        
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
+
 
         public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)
         {

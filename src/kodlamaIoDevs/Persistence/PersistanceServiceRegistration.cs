@@ -19,6 +19,9 @@ namespace Persistence
             services.AddScoped<IFrameworkRepository, FrameworkRepository>();
             services.AddScoped<IMemberRepository, MemberRepository>();
             services.AddScoped<IGithubAccountRepository, GithubAccountRepository>();
+            services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
+            services.AddScoped<IUserOperationClaimRepository, UserOperationClaimRepository>();
+            services.AddScoped<IOperationClaimRepository, OperationClaimRepository>();
 
             return services;
         }

@@ -3,7 +3,7 @@
     public class GetByMemberIdGithubAccountDto
     {
         public int Id { get; set; }
-        public int MemberId { get; set; }
+        public string MemberEmail { get; set; }
         public string GithubLink { get; set; }
     }
 }
