@@ -1,4 +1,4 @@
-﻿namespace Application.Features.Members.Dtos
+﻿namespace Application.Features.Auths.Dtos
 {
     public class LoggedMemberDto
     {
