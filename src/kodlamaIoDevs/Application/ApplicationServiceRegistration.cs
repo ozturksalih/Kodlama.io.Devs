@@ -1,12 +1,13 @@
 ﻿using Application.Features.Frameworks.Rules;
 using Application.Features.GithubAccounts.Rules;
-using Application.Features.Members.Rules;
+using Application.Features.Auths.Rules;
 using Application.Features.ProgrammingLanguages.Rules;
 using Core.Application.Pipelines.Validation;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
+using Application.Services.AuthService;
 
 namespace Application
 {
@@ -20,8 +21,9 @@ namespace Application
 
             services.AddScoped<ProgrammingLanguageBusinessRules>();
             services.AddScoped<FrameworkBusinessRules>();
-            services.AddScoped<MemberBusinessRules>();
+            services.AddScoped<AuthBusinessRules>();
             services.AddScoped<GithubAccountBusinessRules>();
+            services.AddScoped<IAuthService, AuthManager>();
 
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>));

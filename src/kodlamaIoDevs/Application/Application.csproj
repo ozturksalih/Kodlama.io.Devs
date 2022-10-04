@@ -15,10 +15,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Features\Members\Queries\" />
+		<Folder Include="Features\Auths\Queries\" />
 		<Folder Include="Features\Frameworks\Constants\" />
+		<Folder Include="Features\Members\" />
 		<Folder Include="Features\ProgrammingLanguages\Constants\" />
-		<Folder Include="Services\AuthService\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />

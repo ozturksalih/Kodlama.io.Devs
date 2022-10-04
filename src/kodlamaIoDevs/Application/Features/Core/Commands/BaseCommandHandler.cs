@@ -1,6 +1,4 @@
-﻿using Application.Features.Frameworks.Rules;
-using AutoMapper;
-using Core.Persistence.Repositories;
+﻿using AutoMapper;
 
 namespace Application.Features.Core.Core.Command
 {
