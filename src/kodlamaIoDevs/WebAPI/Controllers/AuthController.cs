@@ -1,4 +1,4 @@
-﻿using Application.Features.Auths.Commands.LoginMember;
+﻿using Application.Features.Auths.Commands.Login;
 using Application.Features.Auths.Commands.RegisterMember;
 using Application.Features.Auths.Dtos;
 using Core.Security.Dtos;
