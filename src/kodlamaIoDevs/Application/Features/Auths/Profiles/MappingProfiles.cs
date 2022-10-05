@@ -1,12 +1,4 @@
-﻿
-using Application.Features.Auths.Commands.LoginMember;
-using Application.Features.Auths.Commands.RegisterMember;
-
-using Application.Features.Auths.Dtos;
-using AutoMapper;
-using Core.Security.Dtos;
-using Core.Security.JWT;
-using Domain.Entities;
+﻿using AutoMapper;
 
 namespace Application.Features.Auth.Profiles
 {
@@ -14,12 +6,7 @@ namespace Application.Features.Auth.Profiles
     {
         public MappingProfiles()
         {
-            CreateMap<Member, RegisterCommand>().ReverseMap();
-            CreateMap<Member, RegisteredDto>().ReverseMap();
-
-            CreateMap<Member, LoginMemberCommand>().ReverseMap();
-            CreateMap<AccessToken, LoggedMemberDto>().ReverseMap();
-            CreateMap<Member, UserForLoginDto>().ReverseMap();
+            
         }
     }
 }

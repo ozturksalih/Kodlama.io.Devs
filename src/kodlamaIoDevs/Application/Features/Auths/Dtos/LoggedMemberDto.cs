@@ -1,8 +1,6 @@
 ﻿namespace Application.Features.Auths.Dtos
 {
-    public class LoggedMemberDto
+    public class LoggedMemberDto : RefreshedTokenDto
     {
-        public string Token { get; set; }
-        public DateTime Expiration { get; set; }
     }
 }
