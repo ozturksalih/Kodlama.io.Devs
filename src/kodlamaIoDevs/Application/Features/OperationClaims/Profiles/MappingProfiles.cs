@@ -11,6 +11,10 @@ namespace Application.Features.OperationClaims.Profiles
         {
             CreateMap<CreateOperationClaimCommand, OperationClaim>().ReverseMap();
             CreateMap<OperationClaim, CreatedOperationClaimDto>().ReverseMap();
+
+            CreateMap<OperationClaim, UpdatedClaimOperationClaimDto>().ReverseMap();
+
+            CreateMap<OperationClaim, DeletedOperationClaimDto>().ReverseMap();
         }
     }
 }
