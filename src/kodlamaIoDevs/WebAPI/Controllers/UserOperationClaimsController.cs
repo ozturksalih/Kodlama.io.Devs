@@ -1,4 +1,5 @@
 ﻿using Application.Features.UserOperationClaims.Commands.CreateUserOperationClaim;
+using Application.Features.UserOperationClaims.Commands.DeleteUserOperationClaim;
 using Application.Features.UserOperationClaims.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,5 +16,16 @@ namespace WebAPI.Controllers
 
             return Created("", result);
         }
+
+        [HttpDelete("{Id}")]
+        public async Task<IActionResult> Delete([FromRoute] DeleteUserOperationClaimCommand command)
+        {
+            DeletedUserOperationClaimDto result = await Mediator.Send(command);
+
+            return Ok(result);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetUserOperationClaimsByUserId([FromBody] )
     }
 }

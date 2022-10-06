@@ -11,6 +11,8 @@ namespace Application.Features.UserOperationClaims.Profiles
         {
             CreateMap<UserOperationClaim, CreateUserOperationClaimCommand>().ReverseMap();
             CreateMap<UserOperationClaim, CreatedUserOperationClaimDto>().ReverseMap();
+
+            CreateMap<UserOperationClaim, DeletedUserOperationClaimDto>().ReverseMap();
         }
     }
 }
