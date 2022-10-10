@@ -19,7 +19,6 @@
 		<Folder Include="Features\Frameworks\Constants\" />
 		<Folder Include="Features\Members\" />
 		<Folder Include="Features\ProgrammingLanguages\Constants\" />
-		<Folder Include="Features\UserOperationClaims\Queries\GetByUserIdUserOperationsClaim\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
