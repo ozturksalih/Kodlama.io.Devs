@@ -25,10 +25,10 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetUserOperationClaimsByUserId([FromBody] )
-        {
+        //[HttpGet]
+        //public async Task<IActionResult> GetUserOperationClaimsByUserId([FromBody] )
+        //{
 
-        }
+        //}
     }
 }
