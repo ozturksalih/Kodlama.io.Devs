@@ -6,6 +6,6 @@ namespace Application.Features.UserOperationClaims.Models
     {
         public int UserId { get; set; }
         public string Email { get; set; }
-        public IList<GetByUserIdUserOperationClaimDto> OperationClaimsOfUserList { get; set; }
+        public ICollection<GetByUserIdUserOperationClaimDto> Items { get; set; }
     }
 }

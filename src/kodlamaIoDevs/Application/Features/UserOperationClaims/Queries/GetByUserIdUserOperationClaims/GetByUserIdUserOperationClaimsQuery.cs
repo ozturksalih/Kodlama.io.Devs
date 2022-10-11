@@ -1,7 +1,11 @@
 ﻿using Application.Features.UserOperationClaims.Models;
+using Application.Features.UserOperationClaims.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Persistence.Paging;
+using Core.Security.Entities;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.UserOperationClaims.Queries.GetByUserIdUserOperationClaims
 {
@@ -13,10 +17,23 @@ namespace Application.Features.UserOperationClaims.Queries.GetByUserIdUserOperat
         {
             private readonly IUserOperationClaimRepository _userOperationClaimRepository;
             private readonly IMapper _mapper;
+            private readonly UserOperationClaimBusinessRules _userOperationClaimBusinessRules;
 
-            public Task<GetUserOperationClaimListModel> Handle(GetByUserIdUserOperationClaimsQuery request, CancellationToken cancellationToken)
+            public GetByUserIdUserOperationClaimsQueryHandler(IUserOperationClaimRepository userOperationClaimRepository, IMapper mapper, UserOperationClaimBusinessRules userOperationClaimBusinessRules)
             {
-                throw new NotImplementedException();
+                _userOperationClaimRepository = userOperationClaimRepository;
+                _mapper = mapper;
+                _userOperationClaimBusinessRules = userOperationClaimBusinessRules;
+            }
+
+            public async Task<GetUserOperationClaimListModel> Handle(GetByUserIdUserOperationClaimsQuery request, CancellationToken cancellationToken)
+            {
+                IPaginate<UserOperationClaim> claims = await _userOperationClaimRepository
+                    .GetListAsync(c => c.UserId == request.UserId, include: m=> m.Include(m => m.OperationClaim).Include(m=> m.User));
+
+                GetUserOperationClaimListModel getUserOperationClaimListModel = _mapper.Map<GetUserOperationClaimListModel>(claims);
+
+                return getUserOperationClaimListModel;
             }
         }
     }
